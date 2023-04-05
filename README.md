@@ -19,7 +19,7 @@ To build Intel Data Center GPU driver images and provision the GPU cards on OCP,
 - **Driver Upgrade Scenario** - There is a new release from Intel GPU Drivers. In this scenario, Intel data center GPU driver Dockerfile needs to be updated to include the new release, Intel data center driver container image will be built and packaged from the Dockerfile. After testing and certifying steps, the new image should be released on Red Hat Ecosystem Catalog.    
 - **Kernel Upgrade Scenario** - [Red Hat Enterprise Linux CoreOS (RHCOS)](https://docs.openshift.com/container-platform/4.12/architecture/architecture-rhcos.html) kernel is upgraded in a new OCP release.In this scenario the new data center GPU driver container image should be built to match the new kernel version with the Dockerfile creating the previous image.And the new image also need to be tested, certified and then released on Red Hat Ecoystem Catalog  
 
-## Working With Kernel Module Manager (KMM) Operator on OCP
+## Working With Kernel Module Management (KMM) Operator on OCP
 [KMM operator](https://github.com/rh-ecosystem-edge/kernel-module-management) is supported from OCP-4.12. Users can leverage it to deploy and manage Intel data center GPU driver container images released from this project.
 
 [Pre-build mode](https://github.com/intel/intel-technology-enabling-for-openshift/tree/main/kmmo#managing-intel-dgpu-driver-with-kmm-operator) is the main usage mode suggested from [Intel Technology Enabling Project](https://github.com/intel/intel-technology-enabling-for-openshift).
