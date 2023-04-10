@@ -1,7 +1,7 @@
 # Disclaimer 
 This project is currently under active development, and as such, all source code may not be included in any release. This means that the code is subject to change without notice, and that any information contained within the code should be considered as work in progress. 
 
-# INTEL® Data Center GPU Driver for OpenShift* 
+# Intel® Data Center GPU Driver for OpenShift* 
 
 ## General
 
