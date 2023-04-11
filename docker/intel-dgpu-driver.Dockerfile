@@ -1,7 +1,7 @@
 # Copyright (c) 2023 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
-ARG DTK_AUTO
+ARG DTK_AUTO=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:670b48fcd8cc3a63c9620f342832dcf44edd021266fdc207641befe0e5ff15a3
 FROM ${DTK_AUTO} as builder
 
 WORKDIR /build/
@@ -18,7 +18,7 @@ RUN git clone -b RHEL86_23WW6.5_555_6469.0.3_221221.3 --single-branch https://gi
 # Firmware
 RUN git clone -b 23WW06.5_555 --single-branch https://github.com/intel-gpu/intel-gpu-firmware.git && cd intel-gpu-firmware && mkdir -p firmware/license/ && cp -r COPYRIGHT firmware/license/
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
+FROM registry.redhat.io/ubi8/ubi-minimal
 
 LABEL vendor='Intel®'
 LABEL version='0.1.0'
