@@ -3,7 +3,6 @@ This project is currently under active development, and as such, all source code
 
 # Intel® Data Center GPU Driver for OpenShift* 
 
-
 ## General
 
 **Intel Data Center GPU Driver for OpenShift project** is used to build, package, certify and release Intel data center GPU driver container images for [Red Hat OpenShift Container Platform (OCP)](https://www.redhat.com/en/technologies/cloud-computing/openshift/container-platform). Users can make use of the pre-built images to provision Intel® Data Center GPU cards on OCP. They can also use [Intel data center GPU driver Dockerfile](docker/intel-dgpu-driver.Dockerfile) released from this project as a reference to on-premise build the driver container images and provision the GPU cards. Currently, [Intel® Data Center GPU Flex Series](https://www.intel.com/content/www/us/en/products/docs/discrete-gpus/data-center-gpu/flex-series/overview.html) are supported. [Intel® Data Center GPU Max Series](https://www.intel.com/content/www/us/en/products/details/discrete-gpus/data-center-gpu/max-series.html) support is planned in a future release.
