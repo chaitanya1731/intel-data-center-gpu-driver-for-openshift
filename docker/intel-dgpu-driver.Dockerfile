@@ -18,7 +18,7 @@ RUN git clone -b RHEL86_23WW6.5_555_6469.0.3_221221.3 --single-branch https://gi
 # Firmware
 RUN git clone -b 23WW06.5_555 --single-branch https://github.com/intel-gpu/intel-gpu-firmware.git && cd intel-gpu-firmware && mkdir -p firmware/license/ && cp -r COPYRIGHT firmware/license/
 
-FROM registry.redhat.io/ubi8/ubi-minimal
+FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
 LABEL vendor='Intel®'
 LABEL version='0.1.0'
