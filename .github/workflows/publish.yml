@@ -1,0 +1,51 @@
+name: Publish
+
+on:
+  push:
+    branches:
+        - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python3-venv git
+    - uses: actions/checkout@v2
+      with:
+        ref: devel
+    - name: Set up shared doc directory
+      run: |
+        mkdir $HOME/output
+        touch $HOME/output/.nojekyll
+        author=$(git log --merges --pretty=format:%an -n 1)
+        email=$(git log --merges --pretty=format:%ae -n 1)
+        git config --global user.name "$author"
+        git config --global user.email "$email"
+
+        # https://intel.github.io/pmem-csi/ redirects to the latest stable release.
+        # echo "<meta http-equiv=\"refresh\" content=\"0; URL='0.9/index.html'\" />" >"$HOME/output/index.html"
+        # "latest" used to be what "devel" is now, i.e. the documentation for the "devel"
+        # branch. Now it points to the latest stable release.
+        # ln -s 1.0 "$HOME/output/latest"
+    - name: Build latest
+      run: |
+        GITHUB_SHA=$(git rev-parse HEAD)
+        export GITHUB_SHA
+        rm -rf _work/venv
+        make html
+        mv _build/html/* $HOME/output/
+    - name: Deploy the docs
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cd $HOME/output
+        git init
+        git add .
+        git commit -m "latest html output"
+        git push -f https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:latesthtml    
